@@ -1263,6 +1263,14 @@ input, select, textarea {
   transform: scale(1.04);
 }
 
+.landscape-product-card .primary-img,
+.landscape-product-card .hover-img {
+  object-fit: contain;
+  object-position: center;
+  padding: 18px;
+  background: #f5f0e8;
+}
+
 .lux-card:hover .primary-img {
   transform: scale(1.08);
   opacity: 0.15;
@@ -4234,6 +4242,8 @@ input, select, textarea {
   .sales-bottom-pills-bar button { flex: 0 0 auto; }
   .sales-chat-input-bar { padding: 9px; }
   .sales-chat-input-bar input { min-width: 0; font-size: 12px; }
+  .primary-img, .hover-img { object-position: center top; }
+  .landscape-product-card .primary-img, .landscape-product-card .hover-img { padding: 10px; object-position: center; }
 }
 
 @media (max-width: 480px) {

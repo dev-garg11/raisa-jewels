@@ -622,7 +622,7 @@ function LuxuryProductCard({ product, onQuickView }) {
   )}`;
 
   return (
-    <article className="lux-card hover-lift">
+    <article className={`lux-card hover-lift ${['celestial-diamond-solitaire', 'brilliant-tennis-bracelet'].includes(product.slug) ? 'landscape-product-card' : ''}`}>
       <div className="lux-media">
         <span className="card-tag">{product.tag}</span>
 
