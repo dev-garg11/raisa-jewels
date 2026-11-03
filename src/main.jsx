@@ -269,10 +269,16 @@ const visualArchive = [
   'pinterest-polki-choker.jpg', 'pinterest-ref-01.jpg', 'pinterest-ref-02.jpg', 'pinterest-ref-03.jpg',
   'pinterest-royal-bride.jpg', 'sajdhajke2025.jpeg', 'sculpted-drop-earrings.jpg', 'sol-chain.jpg',
   'The season of sparkle is here 💫 Lights, laughter, and a little golden magic in the air 🪔.jpeg',
-  'jewelry-hero.mp4', 'aurelia-hero.mp4', 'kling_20261031_VIDEO_A_sophisti_5766_0.mp4',
-  'jewelry-detail-01.mp4', 'jewelry-detail-02.mp4', 'jewelry-detail-03.mp4', 'jewelry-detail-04.mp4',
+  'jewelry-hero.mp4', 'aurelia-hero.mp4',
+  'jewelry-detail-02.mp4', 'jewelry-detail-03.mp4', 'jewelry-detail-04.mp4',
   'jewelry-detail-05.mp4', 'model-jewelry-04.mp4', 'model-jewelry-05.mp4', 'model-jewelry-06.mp4',
   'model-jewelry-07.mp4', 'model-jewelry-08.mp4', 'model-jewelry-09.mp4'
+];
+
+const marqueeImages = [
+  'bridal-model.jpg', 'editorial-gold.jpg', 'bridal-profile.jpg', 'luna-cuff.jpg',
+  'emerald-choker-model.jpg', 'jewelry-model-03.jpg', 'jewelry-model-08.jpg',
+  'sol-chain.jpg', 'sculpted-drop-earrings.jpg', 'jewelry-model-12.jpg'
 ];
 
 function useRoute() {
@@ -1571,17 +1577,33 @@ function VisualArchiveSection() {
         </div>
         <p className="head-desc">A full visual edit of our jewellery, model portraits, craft details and cinematic videos—nothing hidden, including the final look.</p>
       </div>
+      <div className="archive-image-marquee" aria-label="Raisa Jewels image marquee">
+        <div className="archive-marquee-track">
+          {[...marqueeImages, ...marqueeImages].map((filename, index) => (
+            <div className="archive-marquee-image" key={`${filename}-${index}`}>
+              <img src={asset(filename)} alt="Raisa Jewels editorial detail" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="visual-archive-grid">
-        {visualArchive.map((filename) => {
+        {visualArchive.map((filename, index) => {
           const isVideo = filename.toLowerCase().endsWith('.mp4');
           return (
             <div className={`archive-media-card ${isVideo ? 'is-video' : ''}`} key={filename}>
+              <div className="archive-card-topline">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <span>{isVideo ? 'Motion' : 'Still'}</span>
+              </div>
               {isVideo ? (
                 <video src={asset(filename)} muted loop autoPlay playsInline preload="metadata" />
               ) : (
                 <img src={asset(filename)} alt={`Raisa Jewels ${filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')}`} loading="lazy" />
               )}
-              <span>{filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')}</span>
+              <div className="archive-card-caption">
+                <span>{filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')}</span>
+                {isVideo && <i aria-hidden="true" />}
+              </div>
             </div>
           );
         })}
