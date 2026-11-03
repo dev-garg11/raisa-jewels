@@ -4235,3 +4235,36 @@ input, select, textarea {
   .sales-chat-input-bar { padding: 9px; }
   .sales-chat-input-bar input { min-width: 0; font-size: 12px; }
 }
+
+@media (max-width: 480px) {
+  .cinematic-hero { min-height: 720px; }
+  .hero-video-player { object-position: 68% center; }
+  .hero-dark-overlay { background: linear-gradient(180deg, rgba(10, 9, 8, 0.25) 0%, rgba(10, 9, 8, 0.58) 38%, rgba(10, 9, 8, 0.94) 88%); }
+  .hero-content-frame { padding: 0 18px; transform: translateY(-12px); }
+  .hero-headline { font-size: 43px; max-width: 340px; }
+  .hero-subtext { max-width: 300px; }
+  .hero-primary-btn, .hero-glass-btn, .hero-whatsapp-direct-btn { min-height: 44px; }
+  .mobile-drawer-inner { padding: 22px 18px; }
+  .drawer-top-row { margin-bottom: 24px; }
+  .m-link { font-size: 14px; padding: 12px 0; }
+  .sales-teaser-bubble { display: none; }
+  .sales-chatbot-window { bottom: 64px; height: calc(100svh - 80px); }
+  .sales-chat-header { padding: 10px 11px; }
+  .agent-avatar { width: 31px; height: 31px; }
+  .header-controls { gap: 3px; }
+  .sales-msg-row { gap: 6px; }
+  .bot-mini-avatar { width: 22px; height: 22px; }
+  .in-chat-products-carousel { margin-right: -4px; }
+  .in-chat-product-card { flex-basis: 142px; }
+  .homepage-signature-strip { padding-top: 30px; }
+  .signature-strip-grid { grid-template-columns: 1fr; }
+  .signature-strip-card { aspect-ratio: 1.8; }
+  .visual-archive-grid { grid-template-columns: 1fr; }
+  .archive-media-card, .archive-media-card.is-video { grid-column: span 1; aspect-ratio: 1.25; }
+  .archive-media-card.is-video { aspect-ratio: 16 / 10; }
+  .shop-main-layout { padding-left: 14px; padding-right: 14px; }
+  .shop-sidebar { padding: 22px 18px; }
+  .lux-details { padding: 13px 12px 14px; }
+  .card-pricing-bar { flex-wrap: wrap; }
+  .card-inquire-whatsapp-btn { margin-left: auto; }
+}
