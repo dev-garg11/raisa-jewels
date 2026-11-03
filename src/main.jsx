@@ -1297,8 +1297,6 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
       </section>
 
-      <ImageMarquee />
-
       {/* Marquee Ticker */}
       <section className="luxury-flowing-marquee">
         <div className="marquee-track">
@@ -1336,8 +1334,6 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
           ))}
         </div>
       </section>
-
-      <VisualArchiveSection />
 
       {/* Featured Masterpieces (No Price - Inquire Only) */}
       <section className="featured-masterpieces-section">
@@ -1770,6 +1766,9 @@ function ShopPage({ onQuickView }) {
           )}
         </main>
       </div>
+
+      <ImageMarquee />
+      <VisualArchiveSection />
     </div>
   );
 }
