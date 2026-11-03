@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowRight, ArrowUpRight, Award, Check, ChevronDown, ChevronRight,
@@ -9,10 +9,31 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
-// Router Navigation
+// Reliable Asset URL Resolver (works on GitHub Pages, Vercel, Netlify & Localhost)
+export const asset = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) return path;
+  const clean = path.replace(/^\.?\/?assets\//, '');
+  return `./assets/${clean}`;
+};
+
+// Universal Router supporting Hash navigation (#/shop) and Path navigation
+const getRoute = () => {
+  const hash = window.location.hash;
+  if (hash && hash.length > 1) {
+    const cleanHash = hash.replace(/^#/, '');
+    return cleanHash.startsWith('/') ? cleanHash : '/' + cleanHash;
+  }
+  let path = window.location.pathname + window.location.search;
+  if (path.includes('/raisa-jewels')) {
+    path = path.replace('/raisa-jewels', '') || '/';
+  }
+  return path || '/';
+};
+
 const go = (path) => {
-  window.history.pushState({}, '', path);
-  window.dispatchEvent(new PopStateEvent('popstate'));
+  const target = path.startsWith('/') ? path : '/' + path;
+  window.location.hash = target;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
@@ -22,9 +43,9 @@ const products = [
     slug: 'heirloom-polki-set',
     name: 'The Royal Polki Choker',
     category: 'Bridal',
-    image: '/assets/pinterest-ref-01.jpg',
-    second: '/assets/bridal-portrait.jpg',
-    video: '/assets/model-jewelry-07.mp4',
+    image: asset('pinterest-ref-01.jpg'),
+    second: asset('bridal-portrait.jpg'),
+    video: asset('model-jewelry-07.mp4'),
     tag: 'Haute Bridal Suite',
     metal: '22K Handcrafted Solid Gold',
     purity: '22K BIS 916 Hallmarked',
@@ -40,9 +61,9 @@ const products = [
     slug: 'celestial-diamond-solitaire',
     name: 'Diamond Solitaire Ring',
     category: 'Rings',
-    image: '/assets/pinterest-diamond-ring.jpg',
-    second: '/assets/astra-signet-ring.jpg',
-    video: '/assets/jewelry-detail-04.mp4',
+    image: asset('pinterest-diamond-ring.jpg'),
+    second: asset('astra-signet-ring.jpg'),
+    video: asset('jewelry-detail-04.mp4'),
     tag: 'Certified Diamond',
     metal: '18K White & Rose Gold',
     purity: '18K with IGI / GIA Cert',
@@ -58,9 +79,9 @@ const products = [
     slug: 'emerald-heritage-collar',
     name: 'Emerald Choker Set',
     category: 'Bridal',
-    image: '/assets/emerald-choker-model.jpg',
-    second: '/assets/pinterest-ref-02.jpg',
-    video: '/assets/model-jewelry-06.mp4',
+    image: asset('emerald-choker-model.jpg'),
+    second: asset('pinterest-ref-02.jpg'),
+    video: asset('model-jewelry-06.mp4'),
     tag: 'Masterpiece Edit',
     metal: '22K Yellow Gold & Syndicate Polki',
     purity: '22K BIS Hallmarked',
@@ -76,9 +97,9 @@ const products = [
     slug: 'maharani-bridal-suite',
     name: 'Maharani Bridal Suite',
     category: 'Bridal',
-    image: '/assets/pinterest-ref-03.jpg',
-    second: '/assets/bridal-model.jpg',
-    video: '/assets/model-jewelry-07.mp4',
+    image: asset('pinterest-ref-03.jpg'),
+    second: asset('bridal-model.jpg'),
+    video: asset('model-jewelry-07.mp4'),
     tag: 'Bridal Trousseau',
     metal: '22K Solid Gold with Meenakari',
     purity: '22K BIS 916 Hallmarked',
@@ -94,9 +115,9 @@ const products = [
     slug: 'sculpted-drop-earrings',
     name: 'Sapphire Teardrop Earrings',
     category: 'Earrings',
-    image: '/assets/sculpted-drop-earrings.jpg',
-    second: '/assets/pinterest-earrings-luxury.jpg',
-    video: '/assets/jewelry-detail-02.mp4',
+    image: asset('sculpted-drop-earrings.jpg'),
+    second: asset('pinterest-earrings-luxury.jpg'),
+    video: asset('jewelry-detail-02.mp4'),
     tag: 'Bestseller',
     metal: '18K White Gold Finish',
     purity: '18K Purity Certified',
@@ -112,9 +133,9 @@ const products = [
     slug: 'sol-fluid-chain',
     name: 'Celestial Crescent Gold Chain',
     category: 'Necklaces',
-    image: '/assets/sol-chain.jpg',
-    second: '/assets/orbit-pearl-hoops.jpg',
-    video: '/assets/jewelry-detail-01.mp4',
+    image: asset('sol-chain.jpg'),
+    second: asset('orbit-pearl-hoops.jpg'),
+    video: asset('jewelry-detail-01.mp4'),
     tag: 'Signature Classic',
     metal: '18K Solid Yellow Gold',
     purity: '18K BIS Hallmarked',
@@ -130,9 +151,9 @@ const products = [
     slug: 'brilliant-tennis-bracelet',
     name: 'Diamond Tennis Bracelet',
     category: 'Bracelets',
-    image: '/assets/fine-ring-detail.jpg',
-    second: '/assets/pearl-hand.jpg',
-    video: '/assets/jewelry-detail-05.mp4',
+    image: asset('fine-ring-detail.jpg'),
+    second: asset('pearl-hand.jpg'),
+    video: asset('jewelry-detail-05.mp4'),
     tag: 'Certified Diamond',
     metal: '18K Solid White Gold',
     purity: '18K with IGI / GIA Cert',
@@ -148,9 +169,9 @@ const products = [
     slug: 'luna-cuff',
     name: 'Chunky Gold Link Bracelet',
     category: 'Bracelets',
-    image: '/assets/pearl-hand.jpg',
-    second: '/assets/fine-ring-detail.jpg',
-    video: '/assets/jewelry-detail-03.mp4',
+    image: asset('pearl-hand.jpg'),
+    second: asset('fine-ring-detail.jpg'),
+    video: asset('jewelry-detail-03.mp4'),
     tag: 'Atelier Edition',
     metal: '18K Solid Yellow Gold Vermeil',
     purity: '18K Purity Certified',
@@ -166,9 +187,9 @@ const products = [
     slug: 'sculpted-gold-hoops',
     name: 'Sculpted Gold Huggie Hoops',
     category: 'Earrings',
-    image: '/assets/dune-layered-chain.jpg',
-    second: '/assets/editorial-gold.jpg',
-    video: '/assets/jewelry-detail-02.mp4',
+    image: asset('dune-layered-chain.jpg'),
+    second: asset('editorial-gold.jpg'),
+    video: asset('jewelry-detail-02.mp4'),
     tag: 'Bestseller',
     metal: '18K Solid Yellow Gold',
     purity: '18K BIS Hallmarked',
@@ -184,9 +205,9 @@ const products = [
     slug: 'orbit-medallion-chain',
     name: 'Tiered Medallion Gold Chain',
     category: 'Necklaces',
-    image: '/assets/orbit-pearl-hoops.jpg',
-    second: '/assets/sol-chain.jpg',
-    video: '/assets/jewelry-detail-01.mp4',
+    image: asset('orbit-pearl-hoops.jpg'),
+    second: asset('sol-chain.jpg'),
+    video: asset('jewelry-detail-01.mp4'),
     tag: 'Trending Silhouette',
     metal: '18K Solid Gold Finish',
     purity: '18K Purity Certified',
@@ -201,22 +222,71 @@ const products = [
 ];
 
 const categories = [
-  { label: 'All Creations', id: '', image: '/assets/bridal-model.jpg', desc: 'Complete Studio Repertoire' },
-  { label: 'Haute Bridal Suite', id: 'Bridal', image: '/assets/pinterest-ref-01.jpg', desc: 'Royal Polki & Chokers' },
-  { label: 'Fine Necklaces', id: 'Necklaces', image: '/assets/orbit-pearl-hoops.jpg', desc: 'Chains & Medallions' },
-  { label: 'Sculptural Earrings', id: 'Earrings', image: '/assets/dune-layered-chain.jpg', desc: 'Hoops, Drops & Huggies' },
-  { label: 'Solitaire Rings', id: 'Rings', image: '/assets/pinterest-diamond-ring.jpg', desc: 'Certified Diamonds & Bands' },
-  { label: 'Artisan Bracelets', id: 'Bracelets', image: '/assets/pearl-hand.jpg', desc: 'Link Bracelets & Tennis Stacks' }
+  { label: 'All Creations', id: '', image: asset('bridal-model.jpg'), desc: 'Complete Studio Repertoire' },
+  { label: 'Haute Bridal Suite', id: 'Bridal', image: asset('pinterest-ref-01.jpg'), desc: 'Royal Polki & Chokers' },
+  { label: 'Fine Necklaces', id: 'Necklaces', image: asset('orbit-pearl-hoops.jpg'), desc: 'Chains & Medallions' },
+  { label: 'Sculptural Earrings', id: 'Earrings', image: asset('dune-layered-chain.jpg'), desc: 'Hoops, Drops & Huggies' },
+  { label: 'Solitaire Rings', id: 'Rings', image: asset('pinterest-diamond-ring.jpg'), desc: 'Certified Diamonds & Bands' },
+  { label: 'Artisan Bracelets', id: 'Bracelets', image: asset('pearl-hand.jpg'), desc: 'Link Bracelets & Tennis Stacks' }
+];
+
+const faceShapeAdvice = {
+  round: {
+    label: 'Round face',
+    reason: 'Aapke face ki soft curves ko balance karne ke liye angular, elongated designs sabse flattering rahenge.',
+    picks: ['sculpted-gold-hoops', 'sol-fluid-chain']
+  },
+  oval: {
+    label: 'Oval face',
+    reason: 'Oval face naturally balanced hota hai, isliye aap almost every silhouette carry kar sakte hain—statement pieces bhi bahut elegant lagenge.',
+    picks: ['heirloom-polki-set', 'sculpted-drop-earrings']
+  },
+  square: {
+    label: 'Square face',
+    reason: 'Aapke defined jawline ko soften karne ke liye rounded hoops, drops aur curved necklaces bahut accha contrast banayenge.',
+    picks: ['sculpted-drop-earrings', 'orbit-medallion-chain']
+  },
+  heart: {
+    label: 'Heart-shaped face',
+    reason: 'Chin area ko visually balance karne ke liye teardrop earrings aur softly rounded chokers beautiful rahenge.',
+    picks: ['sculpted-drop-earrings', 'emerald-heritage-collar']
+  },
+  oblong: {
+    label: 'Oblong face',
+    reason: 'Width aur softness add karne ke liye medium hoops, layered necklaces aur wider statement pieces ideal hain.',
+    picks: ['sculpted-gold-hoops', 'maharani-bridal-suite']
+  }
+};
+
+const visualArchive = [
+  '22KT Designer Antique Gold Necklace Set – Wedding Jewellery for Brides.jpeg',
+  'astra-signet-ring.jpg', 'bridal-model.jpg', 'bridal-portrait.jpg', 'bridal-profile.jpg',
+  'dune-layered-chain.jpg', 'editorial-gold.jpg', 'emerald-choker-model.jpg', 'fine-ring-detail.jpg',
+  'Frida Kahlo, Gustav Klimt And Other Artists Inspire This Jewellery Editorial By Ryan Houssari.jpeg',
+  'gemstone-necklace.jpg', 'jewelry-craftisan.jpg', 'journal-makers.jpg', 'journal-stack.jpg',
+  'luna-cuff.jpg', 'orbit-pearl-hoops.jpg', 'pearl-hand.jpg', 'pinterest-artisan-bench.jpg',
+  'pinterest-diamond-ring.jpg', 'pinterest-earrings-luxury.jpg', 'pinterest-emerald-necklace.jpg',
+  'pinterest-polki-choker.jpg', 'pinterest-ref-01.jpg', 'pinterest-ref-02.jpg', 'pinterest-ref-03.jpg',
+  'pinterest-royal-bride.jpg', 'sajdhajke2025.jpeg', 'sculpted-drop-earrings.jpg', 'sol-chain.jpg',
+  'The season of sparkle is here 💫 Lights, laughter, and a little golden magic in the air 🪔.jpeg',
+  'jewelry-hero.mp4', 'aurelia-hero.mp4', 'kling_20261031_VIDEO_A_sophisti_5766_0.mp4',
+  'jewelry-detail-01.mp4', 'jewelry-detail-02.mp4', 'jewelry-detail-03.mp4', 'jewelry-detail-04.mp4',
+  'jewelry-detail-05.mp4', 'model-jewelry-04.mp4', 'model-jewelry-05.mp4', 'model-jewelry-06.mp4',
+  'model-jewelry-07.mp4', 'model-jewelry-08.mp4', 'model-jewelry-09.mp4'
 ];
 
 function useRoute() {
-  const [path, setPath] = useState(window.location.pathname + window.location.search);
+  const [route, setRoute] = useState(getRoute());
   useEffect(() => {
-    const update = () => setPath(window.location.pathname + window.location.search);
-    window.addEventListener('popstate', update);
-    return () => window.removeEventListener('popstate', update);
+    const handleUpdate = () => setRoute(getRoute());
+    window.addEventListener('hashchange', handleUpdate);
+    window.addEventListener('popstate', handleUpdate);
+    return () => {
+      window.removeEventListener('hashchange', handleUpdate);
+      window.removeEventListener('popstate', handleUpdate);
+    };
   }, []);
-  return path;
+  return route;
 }
 
 // Brand Logo
@@ -234,13 +304,14 @@ function Logo({ light = false }) {
   );
 }
 
-// LUXURY NAVBAR WITH HOVER CATEGORIES DROPDOWN - NO CART - NO LIKE
+// LUXURY NAVBAR WITH HOVER & CLICK CATEGORIES DROPDOWN - NO CART - NO LIKE
 function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -248,6 +319,17 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Click outside listener to safely close collections dropdown
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
   const searchResults = useMemo(() => {
@@ -295,17 +377,25 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
           {/* Left Brand Identity */}
           <Logo />
 
-          {/* Center Navigation Links - Simple Headings + Hover Dropdown */}
+          {/* Center Navigation Links - Simple Headings + Hover & Click Dropdown */}
           <nav className="desktop-nav-links" aria-label="Main Navigation">
-            {/* Collections with Category Dropdown on Hover */}
+            {/* Collections with Category Dropdown on Hover & Click */}
             <div
               className="nav-dropdown-wrapper"
+              ref={dropdownRef}
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <button
+                type="button"
                 className={`nav-item-link nav-dropdown-trigger ${dropdownOpen ? 'is-active' : ''}`}
-                onClick={() => handleNavClick('/shop')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setDropdownOpen((prev) => !prev);
+                }}
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
               >
                 <span>Collections</span>
                 <ChevronDown size={13} className={`chevron-arrow ${dropdownOpen ? 'rotated' : ''}`} />
@@ -314,32 +404,32 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
               {dropdownOpen && (
                 <div className="luxury-menu-dropdown animate-fade-in-up">
                   <div className="dropdown-items-stack">
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop')}>
                       <span className="row-num">01</span>
                       <span className="row-label">All Collections</span>
                       <ArrowUpRight size={14} className="row-arrow" />
                     </button>
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bridal')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bridal')}>
                       <span className="row-num">02</span>
                       <span className="row-label">Haute Bridal Suite</span>
                       <ArrowUpRight size={14} className="row-arrow" />
                     </button>
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Necklaces')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Necklaces')}>
                       <span className="row-num">03</span>
                       <span className="row-label">Fine Gold Necklaces</span>
                       <ArrowUpRight size={14} className="row-arrow" />
                     </button>
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Earrings')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Earrings')}>
                       <span className="row-num">04</span>
                       <span className="row-label">Sculptural Earrings</span>
                       <ArrowUpRight size={14} className="row-arrow" />
                     </button>
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Rings')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Rings')}>
                       <span className="row-num">05</span>
                       <span className="row-label">Certified Solitaire Rings</span>
                       <ArrowUpRight size={14} className="row-arrow" />
                     </button>
-                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bracelets')}>
+                    <button type="button" className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bracelets')}>
                       <span className="row-num">06</span>
                       <span className="row-label">Artisan Bracelets</span>
                       <ArrowUpRight size={14} className="row-arrow" />
@@ -454,22 +544,44 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
           </div>
 
           <div className="mobile-links-group">
-            <span className="drawer-category-label">Navigation</span>
+            <span className="drawer-category-label">Collections & High Jewelry</span>
             <button className="m-link" onClick={() => handleNavClick('/shop')}>
-              All Collections <ChevronRight size={16} />
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>01</span> All Collections</span>
+              <ChevronRight size={16} />
             </button>
             <button className="m-link" onClick={() => handleNavClick('/shop?category=Bridal')}>
-              Haute Bridal Suite <ChevronRight size={16} />
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>02</span> Haute Bridal Suite</span>
+              <ChevronRight size={16} />
             </button>
+            <button className="m-link" onClick={() => handleNavClick('/shop?category=Necklaces')}>
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>03</span> Fine Gold Necklaces</span>
+              <ChevronRight size={16} />
+            </button>
+            <button className="m-link" onClick={() => handleNavClick('/shop?category=Earrings')}>
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>04</span> Sculptural Earrings</span>
+              <ChevronRight size={16} />
+            </button>
+            <button className="m-link" onClick={() => handleNavClick('/shop?category=Rings')}>
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>05</span> Solitaire Rings</span>
+              <ChevronRight size={16} />
+            </button>
+            <button className="m-link" onClick={() => handleNavClick('/shop?category=Bracelets')}>
+              <span><span style={{ color: '#b38838', fontWeight: 700, marginRight: 8 }}>06</span> Artisan Bracelets</span>
+              <ChevronRight size={16} />
+            </button>
+
+            <span className="drawer-category-label" style={{ marginTop: 16 }}>Maison Services</span>
             <button className="m-link m-link-ai" onClick={() => { setMobileMenuOpen(false); onOpenAI(); }}>
               <span><Sparkles size={16} /> Google AI Sales Stylist</span>
               <span className="studio-tag">Studio AI</span>
             </button>
             <button className="m-link" onClick={() => handleNavClick('/about')}>
-              About Atelier <ChevronRight size={16} />
+              <span>About Atelier</span>
+              <ChevronRight size={16} />
             </button>
             <button className="m-link" onClick={() => handleNavClick('/contact')}>
-              Salon Appointment <ChevronRight size={16} />
+              <span>Salon Appointment</span>
+              <ChevronRight size={16} />
             </button>
           </div>
 
@@ -633,7 +745,7 @@ function SalesAIChatbot({ isOpen, onToggle }) {
     {
       id: 1,
       role: 'bot',
-      text: 'Namaste! Welcome to Raisa Jewels. I am your personal AI Sales & Styling Concierge.\n\nLooking for royal bridal suites, everyday solid gold, or want to request an official price quotation for any piece?',
+      text: 'Namaste! Main Raisa ka personal AI Sales & Styling Advisor hoon—20 saal ke jewellery-sales experience jaisi honest guidance ke saath.\n\nAap bridal polki, everyday gold, diamond ring, ya apne face shape ke hisaab se styling advice pooch sakte hain. Main aapki need samajhkar pyaar se best options bataunga.',
       chips: [
         { label: '👑 Royal Bridal Suite', query: 'bridal' },
         { label: '✨ Everyday 18K Gold', query: 'everyday' },
@@ -652,6 +764,26 @@ function SalesAIChatbot({ isOpen, onToggle }) {
     { label: '💬 WhatsApp', query: 'whatsapp' }
   ];
 
+  const handleFaceShapeSelect = (shapeKey) => {
+    const advice = faceShapeAdvice[shapeKey];
+    if (!advice) return;
+    const selected = advice.picks.map((slug) => products.find((item) => item.slug === slug)).filter(Boolean);
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now(), role: 'user', text: advice.label },
+      {
+        id: Date.now() + 1,
+        role: 'bot',
+        text: `Bahut accha—${advice.label} ke liye meri senior-stylist recommendation:\n\n${advice.reason}\n\nNeeche do pieces dekhiye. Pehle try ke liye main **${selected[0]?.name || 'our signature piece'}** suggest karunga.`,
+        products: selected,
+        chips: [
+          { label: 'Selfie guidance', query: 'face shape' },
+          { label: 'Price Quote', query: 'quote' }
+        ]
+      }
+    ]);
+  };
+
   const handleSend = (textToSend) => {
     const query = textToSend || prompt;
     if (!query.trim()) return;
@@ -665,7 +797,18 @@ function SalesAIChatbot({ isOpen, onToggle }) {
       const lower = query.toLowerCase();
       let botResponse = {};
 
-      if (lower.includes('whatsapp') || lower.includes('chat') || lower.includes('talk')) {
+      if (lower.includes('face') || lower.includes('shape') || lower.includes('chehra') || lower.includes('chashma')) {
+        botResponse = {
+          id: Date.now() + 1,
+          role: 'bot',
+          text: 'Bilkul—face shape ke hisaab se jewellery choose karna smart styling ka sabse easy shortcut hai. Clear front-facing selfie upload karke ya neeche closest shape choose karke shuru karein. Aapki privacy ke liye selfie yahin browser mein rahegi; upload server par nahi jayegi.',
+          faceShapeOptions: true,
+          chips: [
+            { label: 'Bridal Styling', query: 'bridal' },
+            { label: 'Ring Advice', query: 'diamond' }
+          ]
+        };
+      } else if (lower.includes('whatsapp') || lower.includes('chat') || lower.includes('talk')) {
         botResponse = {
           id: Date.now() + 1,
           role: 'bot',
@@ -942,6 +1085,20 @@ function SalesAIChatbot({ isOpen, onToggle }) {
                       ))}
                     </div>
                   )}
+
+                  {m.faceShapeOptions && (
+                    <div className="face-shape-helper">
+                      <div className="face-shape-helper-title">Aapka face kis shape ke closest lagta hai?</div>
+                      <div className="face-shape-options">
+                        {Object.entries(faceShapeAdvice).map(([key, advice]) => (
+                          <button key={key} type="button" onClick={() => handleFaceShapeSelect(key)}>
+                            {advice.label}
+                          </button>
+                        ))}
+                      </div>
+                      <small>Tip: selfie seedhi, natural light mein aur bina heavy filter ke dekhein.</small>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -1070,18 +1227,18 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
           loop
           muted={videoMuted}
           playsInline
-          poster="/assets/editorial-gold.jpg"
+          poster={asset('editorial-gold.jpg')}
         >
-          <source src="/assets/jewelry-hero.mp4" type="video/mp4" />
-          <source src="/assets/aurelia-hero.mp4" type="video/mp4" />
+          <source src={asset('jewelry-hero.mp4')} type="video/mp4" />
+          <source src={asset('aurelia-hero.mp4')} type="video/mp4" />
         </video>
 
         <div className="hero-dark-overlay" />
 
         <div className="hero-content-frame animate-fade-in-up">
-          <div className="hero-badge shimmer-effect">
-            <Sparkles size={13} />
-            <span>RAISA JEWELS • EST. 2024</span>
+          <div className="hero-floating-emblem">
+            <Sparkles size={14} className="sparkle-icon" />
+            <span className="gold-shimmer-badge">RAISA JEWELS • HAUTE JOAILLERIE ATELIER</span>
           </div>
 
           <h1 className="hero-headline">
@@ -1201,7 +1358,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         <div className="craft-grid-container">
           <div className="craft-media-side">
             <div className="craft-image-frame hover-lift">
-              <img src="/assets/pinterest-ref-01.jpg" alt="Master karigar handcrafted 22K gold polki jewellery" />
+              <img src={asset('pinterest-ref-01.jpg')} alt="Master karigar handcrafted 22K gold polki jewellery" />
               <div className="craft-badge-overlay">
                 <Sparkles size={14} />
                 <span>Atelier Goldsmithing Artistry • Mehrauli</span>
@@ -1296,10 +1453,10 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
           muted
           loop
           playsInline
-          poster="/assets/bridal-model.jpg"
+          poster={asset('bridal-model.jpg')}
           className="bridal-video"
         >
-          <source src="/assets/model-jewelry-07.mp4" type="video/mp4" />
+          <source src={asset('model-jewelry-07.mp4')} type="video/mp4" />
         </video>
         <div className="bridal-dark-filter" />
         <div className="bridal-content-center animate-fade-in-up">
@@ -1357,13 +1514,15 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
 
         <div className="lookbook-gallery">
-          <div className="gallery-card hover-zoom"><img src="/assets/pinterest-ref-01.jpg" alt="22K Gold Polki Choker" /></div>
-          <div className="gallery-card hover-zoom"><img src="/assets/dune-layered-chain.jpg" alt="Sculpted Gold Huggie Hoops" /></div>
-          <div className="gallery-card hover-zoom"><img src="/assets/pinterest-ref-03.jpg" alt="Royal Indian Bridal Suite" /></div>
-          <div className="gallery-card hover-zoom"><img src="/assets/pinterest-diamond-ring.jpg" alt="Certified Diamond Solitaire Ring" /></div>
-          <div className="gallery-card hover-zoom"><img src="/assets/emerald-choker-model.jpg" alt="Zambian Emerald & Polki Suite" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('pinterest-ref-01.jpg')} alt="22K Gold Polki Choker" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('dune-layered-chain.jpg')} alt="Sculpted Gold Huggie Hoops" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('pinterest-ref-03.jpg')} alt="Royal Indian Bridal Suite" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('pinterest-diamond-ring.jpg')} alt="Certified Diamond Solitaire Ring" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('emerald-choker-model.jpg')} alt="Zambian Emerald & Polki Suite" /></div>
         </div>
       </section>
+
+      <VisualArchiveSection />
 
       {/* Client Testimonials */}
       <section className="testimonials-section">
@@ -1402,18 +1561,52 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
   );
 }
 
+function VisualArchiveSection() {
+  return (
+    <section className="visual-archive-section">
+      <div className="section-head-lux">
+        <div className="head-left">
+          <span className="eyebrow-accent">Complete Atelier Archive</span>
+          <h2>Every Detail, Every Motion</h2>
+        </div>
+        <p className="head-desc">A full visual edit of our jewellery, model portraits, craft details and cinematic videos—nothing hidden, including the final look.</p>
+      </div>
+      <div className="visual-archive-grid">
+        {visualArchive.map((filename) => {
+          const isVideo = filename.toLowerCase().endsWith('.mp4');
+          return (
+            <div className={`archive-media-card ${isVideo ? 'is-video' : ''}`} key={filename}>
+              {isVideo ? (
+                <video src={asset(filename)} muted loop autoPlay playsInline preload="metadata" />
+              ) : (
+                <img src={asset(filename)} alt={`Raisa Jewels ${filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')}`} loading="lazy" />
+              )}
+              <span>{filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 // SHOP / CATALOG PAGE (NO PRICES - NO CART - NO LIKE)
 function ShopPage({ onQuickView }) {
-  const params = new URLSearchParams(window.location.search);
-  const initialCategory = params.get('category') || '';
-  const [selectedCat, setSelectedCat] = useState(initialCategory);
+  const getCategoryParam = () => {
+    let search = window.location.search;
+    if (!search && window.location.hash && window.location.hash.includes('?')) {
+      search = '?' + window.location.hash.split('?')[1];
+    }
+    return new URLSearchParams(search).get('category') || '';
+  };
+
+  const [selectedCat, setSelectedCat] = useState(getCategoryParam);
   const [selectedMetal, setSelectedMetal] = useState('All');
   const [selectedOccasion, setSelectedOccasion] = useState('All');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   useEffect(() => {
-    const cat = new URLSearchParams(window.location.search).get('category') || '';
-    setSelectedCat(cat);
+    setSelectedCat(getCategoryParam());
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -1434,9 +1627,9 @@ function ShopPage({ onQuickView }) {
           loop
           muted
           playsInline
-          poster="/assets/editorial-gold.jpg"
+          poster={asset('editorial-gold.jpg')}
         >
-          <source src="/assets/aurelia-hero.mp4" type="video/mp4" />
+          <source src={asset('aurelia-hero.mp4')} type="video/mp4" />
         </video>
         <div className="shop-video-overlay" />
         <div className="shop-hero-content animate-fade-in-up">
@@ -1561,7 +1754,7 @@ function ProductDetailPage({ slug, onQuickView }) {
   const [pincode, setPincode] = useState('');
   const [deliveryChecked, setDeliveryChecked] = useState(false);
 
-  const gallery = [product.image, product.second, product.video || '/assets/jewelry-detail-01.mp4'];
+  const gallery = [product.image, product.second, product.video || asset('jewelry-detail-01.mp4')];
 
   const whatsAppMessage = `Hello Raisa Atelier,\nI am inquiring about the "${product.name}" (SKU: ${product.sku}).\nPurity: ${selectedPurity} Gold\nWeight: ${product.weight}\nPlease share the current price quotation, hallmarking certificate, and delivery timeline.`;
 
@@ -1752,7 +1945,7 @@ function ProductDetailPage({ slug, onQuickView }) {
   );
 }
 
-// ABOUT / ATELIER PAGE - 100% PURE JEWELLERY (No watches)
+// ABOUT / ATELIER PAGE - 100% PURE JEWELLERY - WORLD CLASS MASTERPIECE
 function AboutPage({ onOpenBooking }) {
   return (
     <div className="about-experience">
@@ -1763,34 +1956,34 @@ function AboutPage({ onOpenBooking }) {
           loop
           muted
           playsInline
-          poster="/assets/bridal-model.jpg"
+          poster={asset('bridal-model.jpg')}
         >
-          <source src="/assets/model-jewelry-04.mp4" type="video/mp4" />
+          <source src={asset('model-jewelry-04.mp4')} type="video/mp4" />
         </video>
         <div className="about-video-overlay" />
         <div className="about-hero-content animate-fade-in-up">
-          <span className="hero-badge shimmer-effect">
-            <Sparkles size={13} />
-            <span>RAISA ATELIER • MEHRAULI</span>
-          </span>
-          <h1>Sculpted by Heritage.<br />Worn with Contemporary Poise.</h1>
-          <p>Raisa Jewels was established to celebrate precious jewelry that belongs in everyday life and generational heirlooms, not dark bank vaults.</p>
+          <div className="hero-floating-emblem">
+            <Sparkles size={14} className="sparkle-icon" />
+            <span className="gold-shimmer-badge">RAISA ATELIER • ESTABLISHED 1988</span>
+          </div>
+          <h1>Sculpted by Royal Heritage.<br />Worn with Contemporary Poise.</h1>
+          <p>Raisa Jewels was founded to celebrate precious jewellery that belongs in everyday life and generational heirlooms, not dark bank vaults.</p>
         </div>
       </div>
 
       <div className="story-split-section">
         <div className="story-image-wrap hover-lift">
-          <img src="/assets/pinterest-ref-01.jpg" alt="Master karigar handcrafted 22K gold polki jewellery" />
-          <span className="image-footnote">Hand-forged 22K gold karigari in our New Delhi studio</span>
+          <img src={asset('pinterest-ref-01.jpg')} alt="Master karigar handcrafted 22K gold polki jewellery" />
+          <span className="image-footnote">Hand-forged 22K gold karigari in our Mehrauli Heritage studio</span>
         </div>
         <div className="story-narrative-wrap">
-          <span className="eyebrow-accent">Generational Craft</span>
+          <span className="eyebrow-accent">Maison Heritage</span>
           <h2>The Human Hand Cannot Be Replicated</h2>
           <p>
-            Every Raisa piece is brought to life through the time-honored traditions of Indian jewellery making: hand granulation, uncut polki jadau setting, and molten gold finishing.
+            Every Raisa piece is brought to life through the time-honored traditions of imperial Indian jewellery making: hand granulation, uncut syndicate polki jadau setting, and molten 22K gold finishing.
           </p>
           <p>
-            We blend these century-old techniques with modern architectural silhouettes, creating pieces that feel feather-light against the skin while holding unmistakable weight in character.
+            We blend these century-old techniques with modern architectural silhouettes, creating pieces that feel feather-light against the skin while holding unmistakable weight in character and heritage.
           </p>
           <div className="about-actions-row">
             <button className="lux-btn-primary hover-glow" onClick={onOpenBooking}>
@@ -1802,27 +1995,135 @@ function AboutPage({ onOpenBooking }) {
               rel="noreferrer"
               className="lux-btn-whatsapp"
             >
-              <MessageCircle size={16} /> WhatsApp Atelier
+              <MessageCircle size={16} /> WhatsApp Atelier (+91 88378 58438)
             </a>
           </div>
         </div>
       </div>
 
-      <div className="values-trio-section">
-        <div className="value-box hover-lift">
-          <span className="val-num">01</span>
-          <h3>Pure Provenance</h3>
-          <p>Only responsibly sourced 22K and 18K metals and conflict-free gemstones hallmarked to international purity standards.</p>
+      {/* 4 Pillars of RAISA JEWELS Mastery */}
+      <div className="section-head-lux text-center" style={{ marginTop: 60 }}>
+        <span className="eyebrow-accent">The Foundations of Perfection</span>
+        <h2>Four Pillars of RAISA JEWELS Mastery</h2>
+      </div>
+
+      <div className="about-pillars-grid">
+        <div className="pillar-3d-card hover-lift">
+          <div className="pillar-num">01</div>
+          <h3 className="pillar-title">100% BIS Hallmarked Purity</h3>
+          <p className="pillar-desc">
+            Every ounce of 22K (916) and 18K (750) gold is certified by the Bureau of Indian Standards with unique laser-engraved HUID identifiers. Zero compromises.
+          </p>
         </div>
-        <div className="value-box hover-lift">
-          <span className="val-num">02</span>
-          <h3>Architectural Fluidity</h3>
-          <p>Pieces sculpted with fluid contours that flow effortlessly with bodily movement and evening attire.</p>
+
+        <div className="pillar-3d-card hover-lift">
+          <div className="pillar-num">02</div>
+          <h3 className="pillar-title">Syndicate Polki & Certified Solitaires</h3>
+          <p className="pillar-desc">
+            Natural uncut syndicate polki diamonds and conflict-free solitaire stones accompanied by accredited GIA and IGI gemological certificates.
+          </p>
         </div>
-        <div className="value-box hover-lift">
-          <span className="val-num">03</span>
-          <h3>Generational Permanence</h3>
-          <p>Jewelry designed to withstand time, accompanied by lifelong maintenance and exchange guarantees.</p>
+
+        <div className="pillar-3d-card hover-lift">
+          <div className="pillar-num">03</div>
+          <h3 className="pillar-title">Ancestral Karigar Lineage</h3>
+          <p className="pillar-desc">
+            Crafted exclusively by third and fourth-generation goldsmith families in New Delhi preserving champlevé enameling, jadau, and hand wire-drawing.
+          </p>
+        </div>
+
+        <div className="pillar-3d-card hover-lift">
+          <div className="pillar-num">04</div>
+          <h3 className="pillar-title">Lifetime Care & Exchange Guarantee</h3>
+          <p className="pillar-desc">
+            Every creation carries lifetime complimentary ultrasonic spa cleaning, stone tightening, re-polishing, and guaranteed exchange valuation privileges.
+          </p>
+        </div>
+      </div>
+
+      {/* Heritage Journey Timeline */}
+      <div className="about-timeline-section">
+        <div className="section-head-lux text-center">
+          <span className="eyebrow-accent">Chronicles of Craft</span>
+          <h2>The Journey of RAISA JEWELS</h2>
+        </div>
+
+        <div className="timeline-track">
+          <div className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-year">1988</div>
+            <div className="timeline-heading">The Founding Goldsmith Atelier</div>
+            <p className="timeline-p">Established as a private family goldsmith salon in historic Mehrauli crafting bridal trousseaux for discerning families.</p>
+          </div>
+
+          <div className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-year">2002</div>
+            <div className="timeline-heading">The Royal Polki Guild</div>
+            <p className="timeline-p">Pioneered syndicate uncut polki chokers combined with untreated Zambian emeralds, reviving Mughal-era jadau artistry.</p>
+          </div>
+
+          <div className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-year">2016</div>
+            <div className="timeline-heading">Architectural Fine Gold</div>
+            <p className="timeline-p">Introduced modern, lightweight Italian link chains, huggies, and certified solitaire rings designed for daily elegance.</p>
+          </div>
+
+          <div className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-year">2026</div>
+            <div className="timeline-heading">Flagship Salon & AI Concierge</div>
+            <p className="timeline-p">Launched our digital haute atelier with AI styling concierge and nationwide white-glove insured delivery.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Master Goldsmith Gallery & Video Showcase */}
+      <div className="section-head-lux text-center" style={{ marginTop: 60 }}>
+        <span className="eyebrow-accent">Atelier in Motion</span>
+        <h2>Inside the RAISA JEWELS Workshop</h2>
+      </div>
+
+      <div className="atelier-showcase-grid">
+        <div className="atelier-video-box">
+          <video autoPlay loop muted playsInline poster={asset('bridal-portrait.jpg')}>
+            <source src={asset('model-jewelry-07.mp4')} type="video/mp4" />
+          </video>
+        </div>
+        <div className="atelier-photos-subgrid">
+          <div className="atelier-photo-tile hover-lift">
+            <img src={asset('pinterest-ref-01.jpg')} alt="Handcrafted 22K gold polki" />
+          </div>
+          <div className="atelier-photo-tile hover-lift">
+            <img src={asset('dune-layered-chain.jpg')} alt="Gold huggie hoop detail" />
+          </div>
+          <div className="atelier-photo-tile hover-lift">
+            <img src={asset('pinterest-ref-03.jpg')} alt="Royal bridal suite" />
+          </div>
+          <div className="atelier-photo-tile hover-lift">
+            <img src={asset('emerald-choker-model.jpg')} alt="Emerald choker masterwork" />
+          </div>
+        </div>
+      </div>
+
+      {/* Certifications Ribbon */}
+      <div className="certifications-ribbon">
+        <div className="cert-pill">
+          <ShieldCheck size={20} />
+          <span>BIS Hallmarked 916 & 750</span>
+        </div>
+        <div className="cert-pill">
+          <Award size={20} />
+          <span>GIA & IGI Certified Diamonds</span>
+        </div>
+        <div className="cert-pill">
+          <Gem size={20} />
+          <span>100% Natural Syndicate Polki</span>
+        </div>
+        <div className="cert-pill">
+          <Truck size={20} />
+          <span>100% Insured Express Transit</span>
         </div>
       </div>
     </div>
@@ -1842,9 +2143,9 @@ function ContactPage({ onOpenBooking }) {
           loop
           muted
           playsInline
-          poster="/assets/bridal-portrait.jpg"
+          poster={asset('bridal-portrait.jpg')}
         >
-          <source src="/assets/model-jewelry-06.mp4" type="video/mp4" />
+          <source src={asset('model-jewelry-06.mp4')} type="video/mp4" />
         </video>
         <div className="contact-video-overlay" />
         <div className="contact-hero-content animate-fade-in-up">
