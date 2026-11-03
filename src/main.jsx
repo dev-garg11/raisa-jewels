@@ -14,7 +14,8 @@ export const asset = (path) => {
   if (!path) return '';
   if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) return path;
   const clean = path.replace(/^\.?\/?assets\//, '');
-  return `./assets/${clean}`;
+  const encodedPath = clean.split('/').map((segment) => encodeURIComponent(segment)).join('/');
+  return `./assets/${encodedPath}`;
 };
 
 // Universal Router supporting Hash navigation (#/shop) and Path navigation
