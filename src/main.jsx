@@ -16,11 +16,11 @@ const go = (path) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// 100% PURE JEWELLERY CATALOGUE - NO WATCHES - ACCURATE VISUAL-TO-TITLE MAPPING
+// 100% PURE JEWELLERY CATALOGUE - RAISA JEWELS - ACCURATE VISUAL-TO-TITLE MAPPING
 const products = [
   {
     slug: 'heirloom-polki-set',
-    name: 'The Royal Jadau Polki Choker',
+    name: 'The Royal Polki Choker',
     category: 'Bridal',
     image: '/assets/pinterest-ref-01.jpg',
     second: '/assets/bridal-portrait.jpg',
@@ -30,7 +30,7 @@ const products = [
     purity: '22K BIS 916 Hallmarked',
     occasion: 'Royal Wedding & Reception',
     weight: '48.5 g',
-    sku: 'AUR-BR-101',
+    sku: 'RJ-BR-101',
     rating: 5.0,
     reviews: 28,
     availability: 'Bespoke Atelier Order',
@@ -38,17 +38,17 @@ const products = [
   },
   {
     slug: 'celestial-diamond-solitaire',
-    name: 'Celestial Brilliant Diamond Halo Solitaire',
+    name: 'Diamond Solitaire Ring',
     category: 'Rings',
     image: '/assets/pinterest-diamond-ring.jpg',
     second: '/assets/astra-signet-ring.jpg',
     video: '/assets/jewelry-detail-04.mp4',
     tag: 'Certified Diamond',
-    metal: '18K Pure White & Rose Gold',
+    metal: '18K White & Rose Gold',
     purity: '18K with IGI / GIA Cert',
     occasion: 'Engagement & Forever',
     weight: '4.2 g',
-    sku: 'AUR-RG-118',
+    sku: 'RJ-RG-118',
     rating: 5.0,
     reviews: 34,
     availability: 'Bespoke Stone Selection',
@@ -56,7 +56,7 @@ const products = [
   },
   {
     slug: 'emerald-heritage-collar',
-    name: 'Zambian Emerald & Polki Suite',
+    name: 'Emerald Choker Set',
     category: 'Bridal',
     image: '/assets/emerald-choker-model.jpg',
     second: '/assets/pinterest-ref-02.jpg',
@@ -66,7 +66,7 @@ const products = [
     purity: '22K BIS Hallmarked',
     occasion: 'Bridal & Grand Festivities',
     weight: '34.8 g',
-    sku: 'AUR-NK-204',
+    sku: 'RJ-NK-204',
     rating: 4.9,
     reviews: 21,
     availability: 'Atelier Creation',
@@ -74,7 +74,7 @@ const products = [
   },
   {
     slug: 'maharani-bridal-suite',
-    name: 'The Maharani Grand Trousseau Suite',
+    name: 'Maharani Bridal Suite',
     category: 'Bridal',
     image: '/assets/pinterest-ref-03.jpg',
     second: '/assets/bridal-model.jpg',
@@ -84,7 +84,7 @@ const products = [
     purity: '22K BIS 916 Hallmarked',
     occasion: 'Grand Wedding Day',
     weight: '82.0 g',
-    sku: 'AUR-BR-501',
+    sku: 'RJ-BR-501',
     rating: 5.0,
     reviews: 19,
     availability: 'Custom Trousseau Consultation',
@@ -92,7 +92,7 @@ const products = [
   },
   {
     slug: 'sculpted-drop-earrings',
-    name: 'Cerulean Sapphire & Diamond Drops',
+    name: 'Sapphire Teardrop Earrings',
     category: 'Earrings',
     image: '/assets/sculpted-drop-earrings.jpg',
     second: '/assets/pinterest-earrings-luxury.jpg',
@@ -102,7 +102,7 @@ const products = [
     purity: '18K Purity Certified',
     occasion: 'Cocktail & Evening Gala',
     weight: '6.4 g',
-    sku: 'AUR-ER-014',
+    sku: 'RJ-ER-014',
     rating: 4.8,
     reviews: 57,
     availability: 'Ready for Dispatch',
@@ -110,7 +110,7 @@ const products = [
   },
   {
     slug: 'sol-fluid-chain',
-    name: 'The Sol Celestial Crescent Necklace',
+    name: 'Celestial Crescent Gold Chain',
     category: 'Necklaces',
     image: '/assets/sol-chain.jpg',
     second: '/assets/orbit-pearl-hoops.jpg',
@@ -120,7 +120,7 @@ const products = [
     purity: '18K BIS Hallmarked',
     occasion: 'Daily Elegance & Layering',
     weight: '8.4 g',
-    sku: 'AUR-NK-001',
+    sku: 'RJ-NK-001',
     rating: 4.9,
     reviews: 42,
     availability: 'Available in Studio',
@@ -128,7 +128,7 @@ const products = [
   },
   {
     slug: 'brilliant-tennis-bracelet',
-    name: 'The Aurelia Brilliant Diamond Tennis Bracelet',
+    name: 'Diamond Tennis Bracelet',
     category: 'Bracelets',
     image: '/assets/fine-ring-detail.jpg',
     second: '/assets/pearl-hand.jpg',
@@ -138,7 +138,7 @@ const products = [
     purity: '18K with IGI / GIA Cert',
     occasion: 'Red Carpet & Gala Stacks',
     weight: '14.2 g',
-    sku: 'AUR-BR-109',
+    sku: 'RJ-BR-109',
     rating: 5.0,
     reviews: 31,
     availability: 'Bespoke Sizing',
@@ -146,7 +146,7 @@ const products = [
   },
   {
     slug: 'luna-cuff',
-    name: 'Luna Chunky Solid Gold Link Bracelet',
+    name: 'Chunky Gold Link Bracelet',
     category: 'Bracelets',
     image: '/assets/pearl-hand.jpg',
     second: '/assets/fine-ring-detail.jpg',
@@ -156,7 +156,7 @@ const products = [
     purity: '18K Purity Certified',
     occasion: 'Daily & Festive Stacks',
     weight: '16.5 g',
-    sku: 'AUR-BR-005',
+    sku: 'RJ-BR-005',
     rating: 4.8,
     reviews: 29,
     availability: 'Available in Studio',
@@ -164,7 +164,7 @@ const products = [
   },
   {
     slug: 'sculpted-gold-hoops',
-    name: 'Aurelia Sculpted Gold Huggie Hoops',
+    name: 'Sculpted Gold Huggie Hoops',
     category: 'Earrings',
     image: '/assets/dune-layered-chain.jpg',
     second: '/assets/editorial-gold.jpg',
@@ -174,7 +174,7 @@ const products = [
     purity: '18K BIS Hallmarked',
     occasion: 'Daily & Day-to-Night',
     weight: '5.8 g',
-    sku: 'AUR-ER-021',
+    sku: 'RJ-ER-021',
     rating: 4.9,
     reviews: 46,
     availability: 'Ready for Dispatch',
@@ -182,7 +182,7 @@ const products = [
   },
   {
     slug: 'orbit-medallion-chain',
-    name: 'Orbit Tiered Medallion Layered Chain',
+    name: 'Tiered Medallion Gold Chain',
     category: 'Necklaces',
     image: '/assets/orbit-pearl-hoops.jpg',
     second: '/assets/sol-chain.jpg',
@@ -192,7 +192,7 @@ const products = [
     purity: '18K Purity Certified',
     occasion: 'Contemporary Layering',
     weight: '11.4 g',
-    sku: 'AUR-NK-012',
+    sku: 'RJ-NK-012',
     rating: 4.9,
     reviews: 24,
     availability: 'Available in Studio',
@@ -202,10 +202,10 @@ const products = [
 
 const categories = [
   { label: 'All Creations', id: '', image: '/assets/bridal-model.jpg', desc: 'Complete Studio Repertoire' },
-  { label: 'Haute Bridal Suite', id: 'Bridal', image: '/assets/pinterest-ref-01.jpg', desc: 'Uncut Syndicate Polki & Chokers' },
-  { label: 'Fine Necklaces', id: 'Necklaces', image: '/assets/orbit-pearl-hoops.jpg', desc: 'Chains, Collars & Medallions' },
+  { label: 'Haute Bridal Suite', id: 'Bridal', image: '/assets/pinterest-ref-01.jpg', desc: 'Royal Polki & Chokers' },
+  { label: 'Fine Necklaces', id: 'Necklaces', image: '/assets/orbit-pearl-hoops.jpg', desc: 'Chains & Medallions' },
   { label: 'Sculptural Earrings', id: 'Earrings', image: '/assets/dune-layered-chain.jpg', desc: 'Hoops, Drops & Huggies' },
-  { label: 'Solitaire Rings', id: 'Rings', image: '/assets/pinterest-diamond-ring.jpg', desc: 'Certified Diamonds & Solitaires' },
+  { label: 'Solitaire Rings', id: 'Rings', image: '/assets/pinterest-diamond-ring.jpg', desc: 'Certified Diamonds & Bands' },
   { label: 'Artisan Bracelets', id: 'Bracelets', image: '/assets/pearl-hand.jpg', desc: 'Link Bracelets & Tennis Stacks' }
 ];
 
@@ -222,22 +222,23 @@ function useRoute() {
 // Brand Logo
 function Logo({ light = false }) {
   return (
-    <button className={`brand-logo ${light ? 'is-light' : ''}`} onClick={() => go('/')} aria-label="Aurelia Haute Joaillerie">
+    <button className={`brand-logo ${light ? 'is-light' : ''}`} onClick={() => go('/')} aria-label="Raisa Jewels">
       <span className="logo-gem">
         <Sparkles size={16} />
       </span>
       <div className="logo-text">
-        <span className="brand-name">AURELIA</span>
+        <span className="brand-name">RAISA JEWELS</span>
         <span className="brand-sub">HAUTE JOAILLERIE • NEW DELHI</span>
       </div>
     </button>
   );
 }
 
-// LUXURY NAVBAR - NO CART - NO LIKE (Inspired by modern high-end agencies like Creativatorss)
+// LUXURY NAVBAR WITH HOVER CATEGORIES DROPDOWN - NO CART - NO LIKE
 function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -256,6 +257,7 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
   }, [searchQuery]);
 
   const handleNavClick = (path) => {
+    setDropdownOpen(false);
     setMobileMenuOpen(false);
     setSearchOpen(false);
     go(path);
@@ -270,7 +272,7 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
           <span className="sep">•</span>
           <span>✦ Certified IGI / GIA Conflict-Free Diamonds</span>
           <span className="sep">•</span>
-          <span>✦ Direct WhatsApp Price Quotations & Video Viewings</span>
+          <span>✦ Direct WhatsApp Price Quotations: +91 88378 58438</span>
           <span className="sep">•</span>
           <span>✦ Private VIP Salon Appointments in Mehrauli, New Delhi</span>
           <span className="sep">•</span>
@@ -293,23 +295,75 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
           {/* Left Brand Identity */}
           <Logo />
 
-          {/* Center Navigation Links - Streamlined Luxury Essentials */}
+          {/* Center Navigation Links - Simple Headings + Hover Dropdown */}
           <nav className="desktop-nav-links" aria-label="Main Navigation">
-            <button className="nav-item-link" onClick={() => handleNavClick('/shop')}>
-              Collections
-            </button>
+            {/* Collections with Category Dropdown on Hover */}
+            <div
+              className="nav-dropdown-wrapper"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <button
+                className={`nav-item-link nav-dropdown-trigger ${dropdownOpen ? 'is-active' : ''}`}
+                onClick={() => handleNavClick('/shop')}
+              >
+                <span>Collections</span>
+                <ChevronDown size={13} className={`chevron-arrow ${dropdownOpen ? 'rotated' : ''}`} />
+              </button>
+
+              {dropdownOpen && (
+                <div className="luxury-menu-dropdown animate-fade-in-up">
+                  <div className="dropdown-items-stack">
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop')}>
+                      <span className="row-num">01</span>
+                      <span className="row-label">All Collections</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bridal')}>
+                      <span className="row-num">02</span>
+                      <span className="row-label">Haute Bridal Suite</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Necklaces')}>
+                      <span className="row-num">03</span>
+                      <span className="row-label">Fine Gold Necklaces</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Earrings')}>
+                      <span className="row-num">04</span>
+                      <span className="row-label">Sculptural Earrings</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Rings')}>
+                      <span className="row-num">05</span>
+                      <span className="row-label">Certified Solitaire Rings</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                    <button className="dropdown-row-item" onClick={() => handleNavClick('/shop?category=Bracelets')}>
+                      <span className="row-num">06</span>
+                      <span className="row-label">Artisan Bracelets</span>
+                      <ArrowUpRight size={14} className="row-arrow" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <button className="nav-item-link" onClick={() => handleNavClick('/shop?category=Bridal')}>
-              Bridal Suite
+              Bridal
             </button>
             <button className="nav-item-link ai-highlight-link" onClick={onOpenAI}>
               <Sparkles size={14} className="sparkle-icon" /> AI Stylist
             </button>
             <button className="nav-item-link" onClick={() => handleNavClick('/about')}>
-              Atelier & Salon
+              About
+            </button>
+            <button className="nav-item-link" onClick={() => handleNavClick('/contact')}>
+              Contact
             </button>
           </nav>
 
-          {/* Right Action Controls - NO CART & NO WISHLIST */}
+          {/* Right Action Controls */}
           <div className="nav-action-hub">
             {/* Search Trigger */}
             <button
@@ -322,11 +376,11 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
 
             {/* Direct WhatsApp Concierge Button */}
             <a
-              href="https://wa.me/918147349242?text=Hello%20Aurelia%20Jewels%2C%20I%20would%20like%20to%20inquire%20about%20your%20jewellery%20collection%20and%20request%20prices."
+              href="https://wa.me/918837858438?text=Hello%20Raisa%20Jewels%2C%20I%20would%20like%20to%20inquire%20about%20your%20jewellery%20collection%20and%20request%20prices."
               target="_blank"
               rel="noreferrer"
               className="nav-whatsapp-pill"
-              title="Direct WhatsApp Quotation Desk"
+              title="Direct WhatsApp Quotation Desk: +91 88378 58438"
             >
               <MessageCircle size={15} />
               <span>WhatsApp Desk</span>
@@ -405,25 +459,28 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
               All Collections <ChevronRight size={16} />
             </button>
             <button className="m-link" onClick={() => handleNavClick('/shop?category=Bridal')}>
-              The Haute Bridal Suite <ChevronRight size={16} />
+              Haute Bridal Suite <ChevronRight size={16} />
             </button>
             <button className="m-link m-link-ai" onClick={() => { setMobileMenuOpen(false); onOpenAI(); }}>
               <span><Sparkles size={16} /> Google AI Sales Stylist</span>
               <span className="studio-tag">Studio AI</span>
             </button>
             <button className="m-link" onClick={() => handleNavClick('/about')}>
-              Master Karigars & Salon <ChevronRight size={16} />
+              About Atelier <ChevronRight size={16} />
+            </button>
+            <button className="m-link" onClick={() => handleNavClick('/contact')}>
+              Salon Appointment <ChevronRight size={16} />
             </button>
           </div>
 
           <div className="drawer-quick-actions">
             <a
-              href="https://wa.me/918147349242?text=Hello%20Aurelia%20Jewels%2C%20I%20would%20like%20to%20inquire%20about%20your%20jewellery%20collection."
+              href="https://wa.me/918837858438?text=Hello%20Raisa%20Jewels%2C%20I%20would%20like%20to%20inquire%20about%20your%20jewellery%20collection."
               target="_blank"
               rel="noreferrer"
               className="drawer-whatsapp-btn"
             >
-              <MessageCircle size={17} /> Direct WhatsApp Quotation
+              <MessageCircle size={17} /> WhatsApp (+91 88378 58438)
             </a>
             <button className="drawer-primary-btn" onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}>
               <Sparkles size={16} /> Book Private Salon Viewing
@@ -432,7 +489,7 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
 
           <div className="drawer-footer-meta">
             <p>12, Mehrauli Heritage Corridor, New Delhi</p>
-            <p>WhatsApp Desk: +91 81473 49242 | hello@aureliajewels.in</p>
+            <p>WhatsApp Desk: +91 88378 58438 | hello@raisajewels.in</p>
           </div>
         </div>
       </div>
@@ -442,8 +499,8 @@ function LuxuryNavbar({ onOpenAI, onOpenBooking }) {
 
 // LUXURY PRODUCT CARD - NO PRICE - NO ADD TO CART - NO LIKE/HEART (Strictly Inquire / WhatsApp)
 function LuxuryProductCard({ product, onQuickView }) {
-  const whatsAppUrl = `https://wa.me/918147349242?text=${encodeURIComponent(
-    `Hello Aurelia Atelier,\nI would like to inquire about the price and availability of "${product.name}" (${product.sku}).\nMetal: ${product.metal} (${product.purity})\nPlease send me the official price quotation and HD video.`
+  const whatsAppUrl = `https://wa.me/918837858438?text=${encodeURIComponent(
+    `Hello Raisa Atelier,\nI would like to inquire about the price and availability of "${product.name}" (${product.sku}).\nMetal: ${product.metal} (${product.purity})\nPlease send me the official price quotation and HD video.`
   )}`;
 
   return (
@@ -497,8 +554,8 @@ function LuxuryProductCard({ product, onQuickView }) {
 function QuickViewModal({ product, onClose }) {
   if (!product) return null;
 
-  const whatsAppUrl = `https://wa.me/918147349242?text=${encodeURIComponent(
-    `Hello Aurelia Atelier,\nI am inquiring about the price and video viewing for "${product.name}" (${product.sku}).\nMetal: ${product.metal} (${product.purity})\nGross Weight: ${product.weight}\nPlease share the current price quotation.`
+  const whatsAppUrl = `https://wa.me/918837858438?text=${encodeURIComponent(
+    `Hello Raisa Atelier,\nI am inquiring about the price and video viewing for "${product.name}" (${product.sku}).\nMetal: ${product.metal} (${product.purity})\nGross Weight: ${product.weight}\nPlease share the current price quotation.`
   )}`;
 
   return (
@@ -576,7 +633,7 @@ function SalesAIChatbot({ isOpen, onToggle }) {
     {
       id: 1,
       role: 'bot',
-      text: 'Namaste! Welcome to Aurelia Atelier. I am your personal AI Sales & Styling Concierge.\n\nLooking for royal bridal suites, everyday solid gold, or want to request an official price quotation for any piece?',
+      text: 'Namaste! Welcome to Raisa Jewels. I am your personal AI Sales & Styling Concierge.\n\nLooking for royal bridal suites, everyday solid gold, or want to request an official price quotation for any piece?',
       chips: [
         { label: '👑 Royal Bridal Suite', query: 'bridal' },
         { label: '✨ Everyday 18K Gold', query: 'everyday' },
@@ -612,10 +669,10 @@ function SalesAIChatbot({ isOpen, onToggle }) {
         botResponse = {
           id: Date.now() + 1,
           role: 'bot',
-          text: 'Our senior gemologist and personal styling desk is live on WhatsApp right now. You can chat directly to request video viewings, hallmarking certificates, or bespoke pricing:',
+          text: 'Our senior gemologist and personal styling desk is live on WhatsApp (+91 88378 58438). You can chat directly to request video viewings, hallmarking certificates, or bespoke pricing:',
           whatsappAction: {
-            label: 'Open Atelier WhatsApp Desk',
-            url: 'https://wa.me/918147349242?text=Hello%20Aurelia%20Jewels%2C%20I%20am%20chatting%20with%20your%20Sales%20AI%20Assistant%20and%20would%20like%20to%20request%20an%20official%20quotation.'
+            label: 'Open Raisa WhatsApp Desk',
+            url: 'https://wa.me/918837858438?text=Hello%20Raisa%20Jewels%2C%20I%20am%20chatting%20with%20your%20Sales%20AI%20Assistant%20and%20would%20like%20to%20request%20an%20official%20quotation.'
           }
         };
       } else if (lower.includes('bridal') || lower.includes('wedding') || lower.includes('polki') || lower.includes('lehenga') || lower.includes('choker')) {
@@ -704,8 +761,8 @@ function SalesAIChatbot({ isOpen, onToggle }) {
       text: `My WhatsApp Number is: ${inquiryPhone} (Inquiring about ${prod.name})`
     };
 
-    const whatsAppUrl = `https://wa.me/918147349242?text=${encodeURIComponent(
-      `Hello Aurelia Atelier,\nI am inquiring via your AI Sales Assistant about ${prod.name} (${prod.sku}).\nMy Phone Number: ${inquiryPhone}\nPlease send me the official price quotation and HD video.`
+    const whatsAppUrl = `https://wa.me/918837858438?text=${encodeURIComponent(
+      `Hello Raisa Atelier,\nI am inquiring via your AI Sales Assistant about ${prod.name} (${prod.sku}).\nMy Phone Number: ${inquiryPhone}\nPlease send me the official price quotation and HD video.`
     )}`;
 
     const botSuccess = {
@@ -766,14 +823,14 @@ function SalesAIChatbot({ isOpen, onToggle }) {
                 <span className="live-status-dot" />
               </div>
               <div className="agent-text">
-                <h3>Aurelia Sales Advisor</h3>
+                <h3>Raisa Sales Advisor</h3>
                 <p>Google AI Studio • Instant Price Enquiry</p>
               </div>
             </div>
 
             <div className="header-controls">
               <a
-                href="https://wa.me/918147349242?text=Hello%20Aurelia%2C%20I%20am%20chatting%20with%20your%20Sales%20AI%20Assistant%20and%20would%20like%20to%20request%20an%20official%20quotation."
+                href="https://wa.me/918837858438?text=Hello%20Raisa%2C%20I%20am%20chatting%20with%20your%20Sales%20AI%20Assistant%20and%20would%20like%20to%20request%20an%20official%20quotation."
                 target="_blank"
                 rel="noreferrer"
                 className="header-whatsapp-pill"
@@ -952,7 +1009,7 @@ function PrivateBookingModal({ isOpen, onClose }) {
           </div>
         ) : (
           <div className="booking-form-wrap">
-            <span className="eyebrow-accent">Aurelia Private Salon</span>
+            <span className="eyebrow-accent">Raisa Private Salon</span>
             <h2>Book an Atelier Viewing</h2>
             <p>Experience our complete collection in privacy with our senior master gemologist in New Delhi or via dedicated HD video appointment.</p>
 
@@ -1024,7 +1081,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         <div className="hero-content-frame animate-fade-in-up">
           <div className="hero-badge shimmer-effect">
             <Sparkles size={13} />
-            <span>AURELIA HAUTE JOAILLERIE • EST. 2024</span>
+            <span>RAISA JEWELS • EST. 2024</span>
           </div>
 
           <h1 className="hero-headline">
@@ -1048,7 +1105,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
             </button>
 
             <a
-              href="https://wa.me/918147349242?text=Hello%20Aurelia%20Atelier%2C%20I%20would%20like%20to%20request%20an%20exclusive%20jewellery%20catalogue."
+              href="https://wa.me/918837858438?text=Hello%20Raisa%20Atelier%2C%20I%20would%20like%20to%20request%20an%20exclusive%20jewellery%20catalogue."
               target="_blank"
               rel="noreferrer"
               className="hero-whatsapp-direct-btn"
@@ -1088,7 +1145,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
       <section className="curated-categories-section">
         <div className="section-head-lux">
           <div className="head-left">
-            <span className="eyebrow-accent">The Aurelia Repertoire</span>
+            <span className="eyebrow-accent">The Raisa Repertoire</span>
             <h2>Curated Collections</h2>
           </div>
           <p className="head-desc">
@@ -1160,7 +1217,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
             <span className="eyebrow-accent">GENERATIONAL KARIGARI</span>
             <h2>The Human Hand Cannot Be Replicated</h2>
             <p>
-              Every Aurelia piece is brought to life through the time-honored traditions of Indian jewellery making: hand granulation, uncut polki jadau setting, and molten 22K gold finishing.
+              Every Raisa piece is brought to life through the time-honored traditions of Indian jewellery making: hand granulation, uncut polki jadau setting, and molten 22K gold finishing.
             </p>
             <p>
               We blend these century-old techniques with modern architectural silhouettes, creating pieces that feel feather-light against the skin while holding unmistakable weight in character.
@@ -1177,7 +1234,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
                 Book Studio Craft Tour
               </button>
               <a
-                href="https://wa.me/918147349242?text=Hello%20Aurelia%20Jewels%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20bespoke%20jewellery%20crafting%20process."
+                href="https://wa.me/918837858438?text=Hello%20Raisa%20Jewels%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20bespoke%20jewellery%20crafting%20process."
                 target="_blank"
                 rel="noreferrer"
                 className="lux-btn-whatsapp"
@@ -1216,7 +1273,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
             <div className="interactive-ai-preview">
               <div className="preview-chat-header">
                 <div className="dots-row"><span /><span /><span /></div>
-                <span>Aurelia AI Concierge</span>
+                <span>Raisa AI Concierge</span>
               </div>
               <div className="preview-chat-body">
                 <div className="preview-user-msg">
@@ -1224,7 +1281,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
                 </div>
                 <div className="preview-ai-msg">
                   <Sparkles size={14} />
-                  <span>"Pair the <strong>The Royal Jadau Polki Choker</strong> with <strong>Aurelia Sculpted Gold Huggie Hoops</strong>. The warm 22K gold granulation will radiate against deep emerald velvet."</span>
+                  <span>"Pair the <strong>The Royal Polki Choker</strong> with <strong>Sculpted Gold Huggie Hoops</strong>. The warm 22K gold granulation will radiate against deep emerald velvet."</span>
                 </div>
               </div>
             </div>
@@ -1294,7 +1351,7 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
             <h2>Moments in Gold</h2>
           </div>
           <a href="https://instagram.com" target="_blank" rel="noreferrer" className="gold-text-link">
-            <span>Follow @aureliajewels</span>
+            <span>Follow @raisajewels</span>
             <ArrowUpRight size={15} />
           </a>
         </div>
@@ -1370,10 +1427,33 @@ function ShopPage({ onQuickView }) {
 
   return (
     <div className="shop-view-wrapper">
-      <div className="shop-hero-banner">
-        <span className="eyebrow-accent">The Complete Repertoire</span>
-        <h1>Curated Jewellery Catalog</h1>
-        <p>Explore our hallmarked gold, certified diamonds, and bespoke bridal pieces. All pieces are available for private quotation via WhatsApp or Salon consultation.</p>
+      <div className="shop-video-hero">
+        <video
+          className="shop-hero-video-player"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/editorial-gold.jpg"
+        >
+          <source src="/assets/aurelia-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="shop-video-overlay" />
+        <div className="shop-hero-content animate-fade-in-up">
+          <span className="hero-badge shimmer-effect">
+            <Sparkles size={13} />
+            <span>RAISA JEWELS • CURATED REPERTOIRE</span>
+          </span>
+          <h1>Curated Jewellery Catalog</h1>
+          <p>
+            Pure 22K & 18K BIS Hallmarked Solid Gold, Certified Diamonds, and Bespoke Heirlooms Crafted with Unspoken Grace.
+          </p>
+          <div className="shop-hero-stats">
+            <div className="stat-pill">✦ 100% BIS 916 & 750 Hallmarked</div>
+            <div className="stat-pill">✦ IGI & GIA Documented Stones</div>
+            <div className="stat-pill">✦ Direct WhatsApp: +91 88378 58438</div>
+          </div>
+        </div>
       </div>
 
       <div className="shop-main-layout">
@@ -1483,7 +1563,7 @@ function ProductDetailPage({ slug, onQuickView }) {
 
   const gallery = [product.image, product.second, product.video || '/assets/jewelry-detail-01.mp4'];
 
-  const whatsAppMessage = `Hello Aurelia Atelier,\nI am inquiring about the "${product.name}" (SKU: ${product.sku}).\nPurity: ${selectedPurity} Gold\nWeight: ${product.weight}\nPlease share the current price quotation, hallmarking certificate, and delivery timeline.`;
+  const whatsAppMessage = `Hello Raisa Atelier,\nI am inquiring about the "${product.name}" (SKU: ${product.sku}).\nPurity: ${selectedPurity} Gold\nWeight: ${product.weight}\nPlease share the current price quotation, hallmarking certificate, and delivery timeline.`;
 
   return (
     <div className="product-page-container">
@@ -1616,7 +1696,7 @@ function ProductDetailPage({ slug, onQuickView }) {
           {/* Direct WhatsApp Action Hub */}
           <div className="product-primary-action-hub">
             <a
-              href={`https://wa.me/918147349242?text=${encodeURIComponent(whatsAppMessage)}`}
+              href={`https://wa.me/918837858438?text=${encodeURIComponent(whatsAppMessage)}`}
               target="_blank"
               rel="noreferrer"
               className="lux-btn-whatsapp full-width hover-glow"
@@ -1625,10 +1705,10 @@ function ProductDetailPage({ slug, onQuickView }) {
             </a>
 
             <a
-              href="tel:+918147349242"
+              href="tel:+918837858438"
               className="lux-btn-primary full-width"
             >
-              <Phone size={16} /> Speak with Senior Gemologist
+              <Phone size={16} /> Speak with Senior Gemologist (+91 88378 58438)
             </a>
           </div>
 
@@ -1676,10 +1756,26 @@ function ProductDetailPage({ slug, onQuickView }) {
 function AboutPage({ onOpenBooking }) {
   return (
     <div className="about-experience">
-      <div className="about-hero-frame animate-fade-in-up">
-        <span className="eyebrow-accent">The Aurelia Philosophy</span>
-        <h1>Sculpted by Heritage.<br />Worn with Contemporary Poise.</h1>
-        <p>Aurelia was established to celebrate precious jewelry that belongs in everyday life and generational heirlooms, not dark bank vaults.</p>
+      <div className="about-video-hero">
+        <video
+          className="about-hero-video-player"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/bridal-model.jpg"
+        >
+          <source src="/assets/model-jewelry-04.mp4" type="video/mp4" />
+        </video>
+        <div className="about-video-overlay" />
+        <div className="about-hero-content animate-fade-in-up">
+          <span className="hero-badge shimmer-effect">
+            <Sparkles size={13} />
+            <span>RAISA ATELIER • MEHRAULI</span>
+          </span>
+          <h1>Sculpted by Heritage.<br />Worn with Contemporary Poise.</h1>
+          <p>Raisa Jewels was established to celebrate precious jewelry that belongs in everyday life and generational heirlooms, not dark bank vaults.</p>
+        </div>
       </div>
 
       <div className="story-split-section">
@@ -1691,7 +1787,7 @@ function AboutPage({ onOpenBooking }) {
           <span className="eyebrow-accent">Generational Craft</span>
           <h2>The Human Hand Cannot Be Replicated</h2>
           <p>
-            Every Aurelia piece is brought to life through the time-honored traditions of Indian jewellery making: hand granulation, uncut polki jadau setting, and molten gold finishing.
+            Every Raisa piece is brought to life through the time-honored traditions of Indian jewellery making: hand granulation, uncut polki jadau setting, and molten gold finishing.
           </p>
           <p>
             We blend these century-old techniques with modern architectural silhouettes, creating pieces that feel feather-light against the skin while holding unmistakable weight in character.
@@ -1701,7 +1797,7 @@ function AboutPage({ onOpenBooking }) {
               Book a Studio Visit
             </button>
             <a
-              href="https://wa.me/918147349242?text=Hello%20Aurelia%20Atelier%2C%20I%20would%20like%20to%20know%20more%20about%20your%20custom%20jewellery%20crafting."
+              href="https://wa.me/918837858438?text=Hello%20Raisa%20Atelier%2C%20I%20would%20like%20to%20know%20more%20about%20your%20custom%20jewellery%20crafting."
               target="_blank"
               rel="noreferrer"
               className="lux-btn-whatsapp"
@@ -1739,10 +1835,26 @@ function ContactPage({ onOpenBooking }) {
 
   return (
     <div className="contact-experience">
-      <div className="contact-hero-frame animate-fade-in-up">
-        <span className="eyebrow-accent">Personal Concierge</span>
-        <h1>We Welcome Your Visit</h1>
-        <p>Visit our private salon in Mehrauli, New Delhi, arrange a virtual viewing, or speak directly with our senior gemologist.</p>
+      <div className="contact-video-hero">
+        <video
+          className="contact-hero-video-player"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/bridal-portrait.jpg"
+        >
+          <source src="/assets/model-jewelry-06.mp4" type="video/mp4" />
+        </video>
+        <div className="contact-video-overlay" />
+        <div className="contact-hero-content animate-fade-in-up">
+          <span className="hero-badge shimmer-effect">
+            <Sparkles size={13} />
+            <span>PERSONAL CONCIERGE & SALON</span>
+          </span>
+          <h1>We Welcome Your Visit</h1>
+          <p>Visit our private salon in Mehrauli, New Delhi, arrange a virtual viewing, or speak directly with our senior gemologist.</p>
+        </div>
       </div>
 
       <div className="contact-content-grid">
@@ -1757,20 +1869,20 @@ function ContactPage({ onOpenBooking }) {
           <div className="info-card-block hover-lift">
             <span className="eyebrow-accent">Direct Contact</span>
             <p>
-              <strong>WhatsApp & Calls:</strong> <a href="tel:+918147349242">+91 81473 49242</a><br />
-              <strong>Atelier Concierge:</strong> <a href="mailto:hello@aureliajewels.in">hello@aureliajewels.in</a>
+              <strong>WhatsApp & Calls:</strong> <a href="tel:+918837858438">+91 88378 58438</a><br />
+              <strong>Atelier Concierge:</strong> <a href="mailto:hello@raisajewels.in">hello@raisajewels.in</a>
             </p>
           </div>
 
           <div className="info-card-block hover-lift">
             <span className="eyebrow-accent">Instant Messaging</span>
             <a
-              href="https://wa.me/918147349242?text=Hello%20Aurelia%2C%20I%20would%20like%20to%20inquire%20about%20a%20piece%20or%20book%20an%20appointment."
+              href="https://wa.me/918837858438?text=Hello%20Raisa%2C%20I%20would%20like%20to%20inquire%20about%20a%20piece%20or%20book%20an%20appointment."
               target="_blank"
               rel="noreferrer"
               className="lux-btn-whatsapp full-width hover-glow"
             >
-              <MessageCircle size={18} /> Chat with Atelier Concierge
+              <MessageCircle size={18} /> Chat with Atelier Concierge (+91 88378 58438)
             </a>
           </div>
         </div>
@@ -1791,7 +1903,7 @@ function ContactPage({ onOpenBooking }) {
               </div>
               <div className="form-group-lux">
                 <label>Phone / WhatsApp Number *</label>
-                <input type="tel" required placeholder="+91 98765 43210" />
+                <input type="tel" required placeholder="+91 88378 58438" />
               </div>
               <div className="form-group-lux">
                 <label>Email Address *</label>
@@ -1834,7 +1946,7 @@ function LuxuryFooter({ onOpenAI, onOpenBooking }) {
           <button onClick={() => go('/shop?category=Bridal')}>Haute Bridal Suite</button>
           <button onClick={() => go('/shop?category=Necklaces')}>Fine Necklaces</button>
           <button onClick={() => go('/shop?category=Earrings')}>Drop Earrings & Hoops</button>
-          <button onClick={() => go('/shop?category=Rings')}>Solitaires & Signets</button>
+          <button onClick={() => go('/shop?category=Rings')}>Solitaires & Bands</button>
         </div>
 
         <div className="footer-nav-col">
@@ -1843,7 +1955,7 @@ function LuxuryFooter({ onOpenAI, onOpenBooking }) {
           <button onClick={onOpenBooking}>Book Salon Appointment</button>
           <button onClick={() => go('/about')}>Heritage & Karigars</button>
           <button onClick={() => go('/contact')}>Contact Concierge</button>
-          <a href="https://wa.me/918147349242" target="_blank" rel="noreferrer">Direct WhatsApp Desk</a>
+          <a href="https://wa.me/918837858438" target="_blank" rel="noreferrer">Direct WhatsApp Desk (+91 88378 58438)</a>
         </div>
 
         <div className="footer-newsletter-col">
@@ -1857,7 +1969,7 @@ function LuxuryFooter({ onOpenAI, onOpenBooking }) {
       </div>
 
       <div className="footer-bottom-bar">
-        <span>© 2026 Aurelia Haute Joaillerie Private Limited. All Rights Reserved.</span>
+        <span>© 2026 Raisa Jewels Private Limited. All Rights Reserved.</span>
         <span>Crafted in India • Worldwide White-Glove Insured Shipping</span>
       </div>
     </footer>
