@@ -1521,16 +1521,28 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
 
         <div className="lookbook-gallery">
-          <div className="gallery-card gallery-video-card hover-zoom">
+          <button className="gallery-card gallery-video-card hover-zoom" onClick={() => go('/shop')} aria-label="Open full jewellery collection">
             <video autoPlay muted loop playsInline preload="metadata" poster={asset('bridal-model.jpg')}>
               <source src={asset('model-jewelry-04.mp4')} type="video/mp4" />
             </video>
             <span>Model Jewellery Motion</span>
-          </div>
-          <div className="gallery-card hover-zoom"><img src={asset('bridal-model.jpg')} alt="22K Gold Polki Bridal Set" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('editorial-gold.jpg')} alt="Everyday Gold Editorial" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('jewelry-model-04.jpg')} alt="Gold Jewellery Model Portrait" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('emerald-choker-model.jpg')} alt="Zambian Emerald & Polki Suite" /></div>
+          </button>
+          <button className="gallery-card hover-zoom" onClick={() => go('/product/heirloom-polki-set')} aria-label="View Royal Polki Choker">
+            <img src={asset('bridal-model.jpg')} alt="22K Gold Polki Bridal Set" />
+            <span>Royal Polki Choker</span>
+          </button>
+          <button className="gallery-card hover-zoom" onClick={() => go('/product/sol-fluid-chain')} aria-label="View Celestial Crescent Gold Chain">
+            <img src={asset('editorial-gold.jpg')} alt="Everyday Gold Editorial" />
+            <span>Everyday Gold Edit</span>
+          </button>
+          <button className="gallery-card hover-zoom" onClick={() => go('/shop?category=Bridal')} aria-label="Explore bridal jewellery">
+            <img src={asset('jewelry-model-04.jpg')} alt="Gold Jewellery Model Portrait" />
+            <span>Bridal Edit</span>
+          </button>
+          <button className="gallery-card hover-zoom" onClick={() => go('/product/emerald-heritage-collar')} aria-label="View Emerald Choker Set">
+            <img src={asset('emerald-choker-model.jpg')} alt="Zambian Emerald & Polki Suite" />
+            <span>Emerald Choker Set</span>
+          </button>
         </div>
       </section>
 
