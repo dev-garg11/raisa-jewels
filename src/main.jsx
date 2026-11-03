@@ -1615,6 +1615,29 @@ function VisualArchiveSection() {
   );
 }
 
+function HomepageSignatureStrip() {
+  return (
+    <section className="homepage-signature-strip">
+      <div className="signature-strip-heading">
+        <div>
+          <span className="eyebrow-accent">From the Homepage Edit</span>
+          <h2>Signature Creations</h2>
+        </div>
+        <span className="signature-strip-note">The same four hero pieces, curated for a closer look</span>
+      </div>
+      <div className="signature-strip-grid">
+        {products.slice(0, 4).map((product) => (
+          <button key={product.slug} className="signature-strip-card" onClick={() => go(`/product/${product.slug}`)}>
+            <img src={product.image} alt={product.name} loading="lazy" />
+            <span>{product.name}</span>
+            <ArrowUpRight size={14} />
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // SHOP / CATALOG PAGE (NO PRICES - NO CART - NO LIKE)
 function ShopPage({ onQuickView }) {
   const getCategoryParam = () => {
@@ -1673,6 +1696,8 @@ function ShopPage({ onQuickView }) {
           </div>
         </div>
       </div>
+
+      <HomepageSignatureStrip />
 
       <div className="shop-main-layout">
         {/* Desktop Filter Sidebar */}
