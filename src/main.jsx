@@ -1335,6 +1335,8 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
       </section>
 
+      <VisualArchiveSection />
+
       {/* Featured Masterpieces (No Price - Inquire Only) */}
       <section className="featured-masterpieces-section">
         <div className="section-head-lux">
@@ -1527,8 +1529,6 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
           <div className="gallery-card hover-zoom"><img src={asset('emerald-choker-model.jpg')} alt="Zambian Emerald & Polki Suite" /></div>
         </div>
       </section>
-
-      <VisualArchiveSection />
 
       {/* Client Testimonials */}
       <section className="testimonials-section">
