@@ -1233,10 +1233,10 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
           loop
           muted={videoMuted}
           playsInline
-          poster={asset('editorial-gold.jpg')}
+          poster={asset('bridal-model.jpg')}
         >
-          <source src={asset('jewelry-hero.mp4')} type="video/mp4" />
           <source src={asset('aurelia-hero.mp4')} type="video/mp4" />
+          <source src={asset('model-jewelry-07.mp4')} type="video/mp4" />
         </video>
 
         <div className="hero-dark-overlay" />
