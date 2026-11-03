@@ -1297,6 +1297,8 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
       </section>
 
+      <ImageMarquee />
+
       {/* Marquee Ticker */}
       <section className="luxury-flowing-marquee">
         <div className="marquee-track">
@@ -1567,6 +1569,20 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
   );
 }
 
+function ImageMarquee() {
+  return (
+    <div className="archive-image-marquee hero-image-marquee" aria-label="Raisa Jewels image marquee">
+      <div className="archive-marquee-track">
+        {[...marqueeImages, ...marqueeImages].map((filename, index) => (
+          <div className="archive-marquee-image" key={`${filename}-${index}`}>
+            <img src={asset(filename)} alt="Raisa Jewels editorial detail" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function VisualArchiveSection() {
   return (
     <section className="visual-archive-section">
@@ -1576,15 +1592,6 @@ function VisualArchiveSection() {
           <h2>Every Detail, Every Motion</h2>
         </div>
         <p className="head-desc">A full visual edit of our jewellery, model portraits, craft details and cinematic videos—nothing hidden, including the final look.</p>
-      </div>
-      <div className="archive-image-marquee" aria-label="Raisa Jewels image marquee">
-        <div className="archive-marquee-track">
-          {[...marqueeImages, ...marqueeImages].map((filename, index) => (
-            <div className="archive-marquee-image" key={`${filename}-${index}`}>
-              <img src={asset(filename)} alt="Raisa Jewels editorial detail" loading="lazy" />
-            </div>
-          ))}
-        </div>
       </div>
       <div className="visual-archive-grid">
         {visualArchive.map((filename, index) => {

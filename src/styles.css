@@ -3935,6 +3935,11 @@ input, select, textarea {
   background: #e9e4db;
 }
 
+.hero-image-marquee {
+  width: 100%;
+  margin: 34px 0 72px;
+}
+
 .archive-marquee-track {
   display: flex;
   width: max-content;
@@ -4069,4 +4074,5 @@ input, select, textarea {
   .visual-archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .archive-media-card.is-video { grid-column: span 2; }
   .archive-marquee-image { width: 124px; height: 78px; }
+  .hero-image-marquee { margin: 22px 0 48px; }
 }
