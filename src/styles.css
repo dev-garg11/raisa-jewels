@@ -1156,35 +1156,33 @@ input, select, textarea {
 .lux-products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 /* Luxury Product Card - Pure Jewellery */
 .lux-card {
   background: #ffffff;
-  border-radius: 8px;
+  border: 1px solid rgba(89, 69, 35, 0.12);
+  border-radius: 9px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 28px rgba(50, 38, 19, 0.07);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
 }
 
 .lux-card {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
-  will-change: transform;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .lux-card:hover {
-  transform: translateY(-8px) rotateX(2deg) scale(1.02);
-  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.22), 0 0 25px rgba(197, 160, 89, 0.22);
+  transform: translateY(-6px);
+  box-shadow: 0 22px 42px rgba(50, 38, 19, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.16);
 }
 
 .lux-media {
   position: relative;
-  aspect-ratio: 0.85;
+  aspect-ratio: 0.82;
   background: #f5f0e8;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
@@ -1301,7 +1299,7 @@ input, select, textarea {
 }
 
 .lux-details {
-  padding: 20px;
+  padding: 17px 18px 18px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1331,9 +1329,9 @@ input, select, textarea {
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.25;
-  margin-bottom: 14px;
+  margin: 6px 0 14px;
   color: var(--dark);
 }
 
