@@ -1520,10 +1520,15 @@ function HomePage({ onQuickView, onOpenAI, onOpenBooking }) {
         </div>
 
         <div className="lookbook-gallery">
-          <div className="gallery-card hover-zoom"><img src={asset('pinterest-ref-01.jpg')} alt="22K Gold Polki Choker" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('dune-layered-chain.jpg')} alt="Sculpted Gold Huggie Hoops" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('pinterest-ref-03.jpg')} alt="Royal Indian Bridal Suite" /></div>
-          <div className="gallery-card hover-zoom"><img src={asset('pinterest-diamond-ring.jpg')} alt="Certified Diamond Solitaire Ring" /></div>
+          <div className="gallery-card gallery-video-card hover-zoom">
+            <video autoPlay muted loop playsInline preload="metadata" poster={asset('bridal-model.jpg')}>
+              <source src={asset('model-jewelry-04.mp4')} type="video/mp4" />
+            </video>
+            <span>Model Jewellery Motion</span>
+          </div>
+          <div className="gallery-card hover-zoom"><img src={asset('bridal-model.jpg')} alt="22K Gold Polki Bridal Set" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('editorial-gold.jpg')} alt="Everyday Gold Editorial" /></div>
+          <div className="gallery-card hover-zoom"><img src={asset('jewelry-model-04.jpg')} alt="Gold Jewellery Model Portrait" /></div>
           <div className="gallery-card hover-zoom"><img src={asset('emerald-choker-model.jpg')} alt="Zambian Emerald & Polki Suite" /></div>
         </div>
       </section>
