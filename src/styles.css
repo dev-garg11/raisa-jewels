@@ -4162,3 +4162,76 @@ input, select, textarea {
   .signature-strip-note { text-align: left; }
   .signature-strip-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
+
+/* Final mobile polish: keep the luxury layout airy and touch-friendly. */
+@media (max-width: 600px) {
+  html, body, #root { max-width: 100%; overflow-x: hidden; }
+  .nav-container { min-height: 68px; padding: 0 14px; }
+  .brand-sub, .nav-whatsapp-pill, .action-icon-btn { display: none; }
+  .brand-name { font-size: 13px; letter-spacing: 0.16em; }
+  .brand-logo { gap: 7px; }
+  .logo-gem { width: 28px; height: 28px; }
+  .cinematic-hero { min-height: 690px; height: calc(100svh - 68px); max-height: 820px; }
+  .hero-content-frame { padding: 0 20px; align-items: flex-start; }
+  .hero-floating-emblem, .hero-badge { font-size: 8px; letter-spacing: 0.13em; max-width: 100%; }
+  .hero-headline { font-size: clamp(42px, 12vw, 58px); line-height: 0.98; margin-bottom: 18px; }
+  .hero-subtext { max-width: 330px; font-size: 13px; line-height: 1.55; margin-bottom: 25px; }
+  .hero-action-cluster { width: 100%; gap: 9px; }
+  .hero-primary-btn, .hero-glass-btn, .hero-whatsapp-direct-btn { width: 100%; min-height: 46px; padding: 12px 16px; font-size: 10px; }
+  .hero-bottom-controls { left: 20px; right: 20px; bottom: 18px; }
+  .hero-scroll-invite { display: none; }
+  .luxury-flowing-marquee { font-size: 9px; }
+  .featured-masterpieces-section, .curated-categories-section { padding-left: 18px; padding-right: 18px; }
+  .section-head-lux h2 { font-size: 31px; line-height: 1.05; }
+  .section-head-lux .head-desc { font-size: 12px; line-height: 1.55; }
+  .lux-products-grid { gap: 14px; }
+  .lux-card { border-radius: 7px; }
+  .lux-media { aspect-ratio: 0.86; }
+  .card-tag { top: 10px; left: 10px; font-size: 8px; padding: 5px 8px; }
+  .quick-inspect-btn { opacity: 1; bottom: 10px; padding: 8px 12px; font-size: 8px; transform: translateX(-50%); }
+  .lux-details { padding: 14px 13px 15px; }
+  .meta-head { align-items: flex-start; gap: 6px; }
+  .category-meta { font-size: 8px; line-height: 1.35; }
+  .status-badge { font-size: 8px; }
+  .card-title { font-size: 18px; margin-bottom: 12px; }
+  .card-pricing-bar { align-items: flex-end; gap: 8px; }
+  .quote-status { font-size: 8px; }
+  .quote-text { font-size: 12px; }
+  .card-inquire-whatsapp-btn { padding: 8px 10px; font-size: 8px; }
+  .mosaic-card:nth-child(n) { height: 260px; }
+  .homepage-signature-strip { padding-left: 18px; padding-right: 18px; }
+  .signature-strip-card { aspect-ratio: 1.25; }
+  .signature-strip-card span { left: 10px; bottom: 10px; font-size: 12px; }
+  .shop-video-hero { min-height: 520px; }
+  .shop-hero-content { padding: 0 20px; }
+  .shop-hero-content h1 { font-size: 42px; line-height: 0.98; }
+  .shop-hero-content p { font-size: 13px; line-height: 1.55; }
+  .shop-hero-stats { gap: 6px; }
+  .stat-pill { font-size: 8px; padding: 6px 8px; }
+  .shop-main-layout { padding: 28px 18px 70px; gap: 24px; }
+  .shop-content-area { min-width: 0; }
+  .catalog-toolbar { gap: 10px; margin-bottom: 20px; }
+  .count-label { font-size: 10px; }
+  .mobile-filter-trigger { padding: 8px 10px; font-size: 9px; }
+  .archive-image-marquee { margin-left: -18px; margin-right: -18px; width: calc(100% + 36px); }
+  .hero-image-marquee { margin: 22px 0 42px; width: 100%; }
+  .visual-archive-section { padding-left: 18px; padding-right: 18px; }
+  .floating-sales-launcher-container { right: 12px; bottom: 12px; gap: 8px; }
+  .floating-sales-btn { padding: 6px 12px 6px 6px; }
+  .sales-avatar-wrap { width: 34px; height: 34px; }
+  .sales-btn-label { font-size: 9px; letter-spacing: 0.08em; }
+  .sales-teaser-bubble { max-width: 220px; padding: 9px 11px; }
+  .teaser-content p { font-size: 10px; }
+  .sales-chatbot-window { right: 10px; bottom: 72px; width: calc(100vw - 20px); max-width: none; height: calc(100svh - 92px); max-height: 720px; border-radius: 14px; }
+  .sales-chat-header { padding: 12px 13px; }
+  .agent-text h3 { font-size: 13px; }
+  .agent-text p { font-size: 8px; }
+  .header-whatsapp-pill span { display: none; }
+  .sales-chat-stream { padding: 13px 11px; gap: 12px; }
+  .sales-msg-bubble { max-width: 91%; font-size: 12px; padding: 10px 11px; }
+  .in-chat-product-card { flex-basis: 150px; }
+  .sales-bottom-pills-bar { overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; }
+  .sales-bottom-pills-bar button { flex: 0 0 auto; }
+  .sales-chat-input-bar { padding: 9px; }
+  .sales-chat-input-bar input { min-width: 0; font-size: 12px; }
+}
